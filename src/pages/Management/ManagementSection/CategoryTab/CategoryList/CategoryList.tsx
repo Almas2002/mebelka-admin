@@ -1,11 +1,11 @@
 import { Stack, Typography } from "@mui/material";
 import MainBaseButton from "../../../../../components/Button/MainBaseButton/MainBaseButton";
-import { useGetMarkaQuery } from "../../../../../redux/store/rtk-api/management-rtk/managementEndpoints";
-import MarkaOne from "./MarkaOne";
+import { useGetCategoryQuery } from "../../../../../redux/store/rtk-api/management-rtk/managementEndpoints";
+import CategoryOne from "./CategoryOne";
 
-const MarkaList = () => {
+const CategoryList = () => {
   const { data, isSuccess, isLoading, isFetching, refetch } =
-    useGetMarkaQuery("");
+    useGetCategoryQuery("");
 
   return (
     <Stack>
@@ -18,7 +18,7 @@ const MarkaList = () => {
           </Stack>
 
           {data.data.map((row) => (
-            <MarkaOne key={row.id} data={row} />
+            <CategoryOne key={row.id} data={row} />
           ))}
         </Stack>
       ) : (
@@ -28,4 +28,4 @@ const MarkaList = () => {
   );
 };
 
-export default MarkaList;
+export default CategoryList;

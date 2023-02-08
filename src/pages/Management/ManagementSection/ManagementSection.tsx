@@ -7,11 +7,7 @@ import SortOutlinedIcon from "@mui/icons-material/SortOutlined";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 
 import CityTab from "./CityTab";
-import MarkaTab from "./MarkaTab";
-import ModelTab from "./ModelTab";
-import BodyTab from "./BodyTab";
-import GenerationTab from "./GenerationTab";
-import TagTab from "./TagTab";
+import CategoryTab from "./CategoryTab";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -73,10 +69,6 @@ const ManagementSection = () => {
     }
   }, [location]);
 
-  // {
-  //   setValue(0);
-  // }
-
   const navigate = useNavigate();
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -105,27 +97,6 @@ const ManagementSection = () => {
             label="Категорий"
             onClick={() => navigate("/app/management/marka")}
           />
-          {/* <Tab
-            icon={<LocalOfferOutlinedIcon />}
-            label="Модель"
-            onClick={() => navigate("/app/management/model")}
-          />
-
-          <Tab
-            icon={<LocalOfferOutlinedIcon />}
-            label="Кузов"
-            onClick={() => navigate("/app/management/body")}
-          />
-          <Tab
-            icon={<LocalOfferOutlinedIcon />}
-            label="Поколение"
-            onClick={() => navigate("/app/management/generation")}
-          /> */}
-          <Tab
-            icon={<LocalOfferOutlinedIcon />}
-            label="Тэги"
-            onClick={() => navigate("/app/management/tags")}
-          />
         </Tabs>
       </Box>
 
@@ -133,20 +104,7 @@ const ManagementSection = () => {
         <CityTab />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <MarkaTab />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <ModelTab />
-      </TabPanel>
-
-      <TabPanel value={value} index={3}>
-        <BodyTab />
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        <GenerationTab />
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        <TagTab />
+        <CategoryTab />
       </TabPanel>
     </Box>
   );

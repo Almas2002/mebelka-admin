@@ -1,8 +1,8 @@
 import { Box, Stack, Typography } from "@mui/material";
-import DescriptionCreate from "./Description/DescriptionCreate";
-import DescriptionList from "./Description/DescriptionList";
+import CategoryCreate from "./CategoryCreate";
+import CategoryList from "./CategoryList";
 
-const TagTab = () => {
+const CategoryTab = () => {
   return (
     <Box>
       <Stack direction={"row"} sx={{ justifyContent: "space-between" }}>
@@ -14,16 +14,16 @@ const TagTab = () => {
             fontWeight: 600,
           }}
         >
-          Тэги
+          Категорий
         </Typography>
       </Stack>
 
       <Stack spacing={2}>
-        <DescriptionCreate />
-        <DescriptionList />
+        <CategoryCreate />
+        <CategoryList />
       </Stack>
     </Box>
   );
 };
 
-export default TagTab;
+export default CategoryTab;

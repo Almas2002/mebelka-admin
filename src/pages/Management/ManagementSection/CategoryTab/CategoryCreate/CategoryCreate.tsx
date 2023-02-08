@@ -3,14 +3,14 @@ import { Formik } from "formik";
 
 import MainBaseButton from "../../../../../components/Button/MainBaseButton/MainBaseButton";
 import { StyledMainInput } from "../../../../../components/Input/StyledMainInput";
-import { useCreateBodyMutation } from "../../../../../redux/store/rtk-api/management-rtk/managementEndpoints";
+import { useCreateCategoryMutation } from "../../../../../redux/store/rtk-api/management-rtk/managementEndpoints";
 
-const BodyCreate = () => {
-  const [create] = useCreateBodyMutation();
+const CategoryCreate = () => {
+  const [create] = useCreateCategoryMutation();
 
   return (
     <Stack>
-      <Typography>Добавить Кузов</Typography>
+      <Typography>Добавить категорию</Typography>
 
       <Formik
         initialValues={{ value: "" }}
@@ -42,4 +42,4 @@ const BodyCreate = () => {
   );
 };
 
-export default BodyCreate;
+export default CategoryCreate;
