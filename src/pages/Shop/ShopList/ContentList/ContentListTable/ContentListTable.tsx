@@ -24,19 +24,20 @@ import {
   IAdminAnnouncement,
   IAnnouncement,
 } from "../../../../../types/Announcement/Announcement.type";
+import { IShop } from "../../../../../types/Shop/IShop";
 import numberWithSpaces from "../../../../../utils/numberWithSpaces";
 
-const tableHead = ["Объявление", "Статус", "Категория"];
+const tableHead = ["Наименование", "Номер телефона", "ID"];
 
 interface Props {
-  tableData: IAdminAnnouncement[];
+  tableData: IShop[];
 }
 
 const ContentListTable: FC<Props> = ({ tableData }) => {
   const navigate = useNavigate();
 
   const handleNavigate = (id: number) => {
-    navigate(`/app/announcement/one/${id}`);
+    navigate(`/app/shop/${id}`);
   };
 
   return (
@@ -59,26 +60,15 @@ const ContentListTable: FC<Props> = ({ tableData }) => {
             <StyledBodyRow key={row.id}>
               <StyledBodyCellFirst>
                 <Stack direction="row" spacing={1}>
-                  <Box
-                    sx={{
-                      backgroundColor: "primary.main",
-                      borderRadius: "10px",
-                      minWidth: "60px",
-                      width: "60px",
-                      height: "60px",
-                    }}
-                  ></Box>
-                  <Stack justifyContent={"center"}>
-                    <Typography variant="h6" sx={{ color: "#2DC36A" }}>
-                      {`${numberWithSpaces(row.price)} KZT`}
-                    </Typography>
-                  </Stack>
+                  <Typography sx={{ fontWeight: 600, fontSize: "18px" }}>
+                    {row.title}
+                  </Typography>
                 </Stack>
               </StyledBodyCellFirst>
               <StyledBodyCell>
-                <ChipStatus status={row.status} />
+                <Typography sx={{ fontSize: "14px" }}>{row.phone}</Typography>
               </StyledBodyCell>
-              <StyledBodyCell>Мебель</StyledBodyCell>
+              <StyledBodyCell>{row.id}</StyledBodyCell>
               <StyledBodyCellLast>
                 <MainBaseButton
                   onClick={() => handleNavigate(row.id)}

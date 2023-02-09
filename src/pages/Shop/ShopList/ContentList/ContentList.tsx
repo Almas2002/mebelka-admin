@@ -6,6 +6,7 @@ import ContentListPagination from "./ContentListPagination";
 import { useTypedSelector } from "../../../../redux/store";
 import { useGetAnnouncementsAdminQuery } from "../../../../redux/store/rtk-api/announcement-rtk/announcementEndpoints";
 import ContentListTable from "./ContentListTable";
+import { useGetShopQuery } from "../../../../redux/store/rtk-api/shop-rtk/shopEndpoints";
 
 interface Props {
   forArchive?: boolean;
@@ -18,13 +19,15 @@ const ContentList: FC<Props> = ({ getCounts, withoutPagination }) => {
   const filterValues = useTypedSelector((state) => state.filter.values);
 
   const queryWithFilterParams = {
-    ...filterValues,
+    // ...filterValues,
   };
 
-  const { data, isLoading, isFetching, isSuccess } =
-    useGetAnnouncementsAdminQuery(queryWithFilterParams, {
+  const { data, isLoading, isFetching, isSuccess } = useGetShopQuery(
+    queryWithFilterParams,
+    {
       refetchOnMountOrArgChange: true,
-    });
+    }
+  );
 
   useEffect(() => {
     if (isSuccess) {
@@ -38,7 +41,7 @@ const ContentList: FC<Props> = ({ getCounts, withoutPagination }) => {
         <ContentSkeleton />
       ) : isSuccess ? (
         data.count === 0 ? (
-          <Typography>Нет Объявлений</Typography>
+          <Typography>Нет Магазинов</Typography>
         ) : (
           <>
             <ContentListTable tableData={data.data} />

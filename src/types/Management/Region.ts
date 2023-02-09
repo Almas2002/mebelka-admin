@@ -1,5 +1,5 @@
 export interface ICreateRegion {
-  value: string;
+  title: string;
   regionId?: number;
 }
 

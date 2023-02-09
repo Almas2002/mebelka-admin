@@ -18,6 +18,7 @@ import userApi from "./rtk-api/user-rtk/userApi";
 import managementApi from "./rtk-api/management-rtk/managementApi";
 import cityApi from "./rtk-api/city-rtk/cityApi";
 import announcementApi from "./rtk-api/announcement-rtk/announcementApi";
+import shopApi from "./rtk-api/shop-rtk/shopApi";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   [managementApi.reducerPath]: managementApi.reducer,
   [cityApi.reducerPath]: cityApi.reducer,
   [announcementApi.reducerPath]: announcementApi.reducer,
+  [shopApi.reducerPath]: shopApi.reducer,
 
   [userApi.reducerPath]: userApi.reducer,
   [staffApi.reducerPath]: staffApi.reducer,
@@ -48,7 +50,8 @@ export const store = configureStore({
 
       managementApi.middleware,
       cityApi.middleware,
-      announcementApi.middleware
+      announcementApi.middleware,
+      shopApi.middleware
     ),
 });
 

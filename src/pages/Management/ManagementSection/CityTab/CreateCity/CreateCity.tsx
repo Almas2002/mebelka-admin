@@ -25,9 +25,9 @@ const CreateCity: FC<Props> = ({ id }) => {
         initialValues={{ region: "" }}
         onSubmit={(values) => {
           if (id) {
-            createCity({ value: values.region, regionId: id });
+            createCity({ title: values.region, regionId: id });
           } else {
-            create({ value: values.region });
+            create({ title: values.region });
           }
         }}
       >
