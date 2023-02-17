@@ -1,8 +1,8 @@
 import { Box, Stack, Typography } from "@mui/material";
-import CategoryCreate from "./CategoryCreate";
-import CategoryList from "./CategoryList";
+import ProductDecorCreate from "./ProductDecorCreate";
+import ProductDecorList from "./ProductDecorList";
 
-const CategoryTab = () => {
+const ProductDecorTab = () => {
   return (
     <Box>
       <Stack direction={"row"} sx={{ justifyContent: "space-between" }}>
@@ -14,16 +14,16 @@ const CategoryTab = () => {
             fontWeight: 600,
           }}
         >
-          Цвет Продукта
+          Декор Продукта
         </Typography>
       </Stack>
 
       <Stack spacing={2}>
-        <CategoryCreate />
-        <CategoryList />
+        <ProductDecorCreate />
+        <ProductDecorList />
       </Stack>
     </Box>
   );
 };
 
-export default CategoryTab;
+export default ProductDecorTab;

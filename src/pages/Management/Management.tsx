@@ -34,12 +34,10 @@ const Profile = () => {
           <Route index element={<Navigate to="city" />} />
 
           <Route path={"city"} element={<ManagementSection />} />
-          <Route path={"marka"} element={<ManagementSection />} />
-          <Route path={"model"} element={<ManagementSection />} />
-
-          <Route path={"body"} element={<ManagementSection />} />
-          <Route path={"generation"} element={<ManagementSection />} />
-          <Route path={"tags"} element={<ManagementSection />} />
+          <Route path={"category"} element={<ManagementSection />} />
+          <Route path={"product-info-color"} element={<ManagementSection />} />
+          <Route path={"product-info-decor"} element={<ManagementSection />} />
+          <Route path={"product-info-frame"} element={<ManagementSection />} />
 
           <Route path={"*"} element={<Error />} />
         </Routes>

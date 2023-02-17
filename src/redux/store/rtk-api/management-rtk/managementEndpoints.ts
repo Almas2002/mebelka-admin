@@ -1,3 +1,7 @@
+import {
+  IProductInfoColor,
+  IProductInfoDecor,
+} from "./../../../../types/Management/IProductInfo";
 import managementApi from "./managementApi";
 import { IGetMarkaResponse } from "../../../../types/Management/Marka";
 
@@ -29,23 +33,55 @@ export const managementEndpoints = managementApi.injectEndpoints({
       }),
     }),
 
-    getProductColor: builder.query<IGetMarkaResponse, any>({
+    // product-info
+    getProductInfoColor: builder.query<IProductInfoColor[], any>({
       query: () => ({
         url: `product-info/color`,
         method: "GET",
       }),
-      providesTags: ["product-info"],
+      providesTags: ["product-info-color"],
     }),
-    createProductColor: builder.mutation<any, { title: string; value: string }>(
-      {
-        query: (body) => ({
-          url: "product-info/color",
-          method: "POST",
-          body,
-        }),
-        invalidatesTags: ["product-info"],
-      }
-    ),
+    createProdctInfoColor: builder.mutation<
+      any,
+      { title: string; value: string }
+    >({
+      query: (body) => ({
+        url: "product-info/color",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["product-info-color"],
+    }),
+    getProductInfoDecor: builder.query<IProductInfoDecor[], any>({
+      query: () => ({
+        url: `product-info/decor`,
+        method: "GET",
+      }),
+      providesTags: ["product-info-decor"],
+    }),
+    createProdctInfoDecor: builder.mutation<any, { title: string }>({
+      query: (body) => ({
+        url: "product-info/decor",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["product-info-decor"],
+    }),
+    getProductInfoFrame: builder.query<IProductInfoDecor[], any>({
+      query: () => ({
+        url: `product-info/frame`,
+        method: "GET",
+      }),
+      providesTags: ["product-info-frame"],
+    }),
+    createProdctInfoFrame: builder.mutation<any, { title: string }>({
+      query: (body) => ({
+        url: "product-info/frame",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["product-info-frame"],
+    }),
   }),
 });
 
@@ -53,4 +89,11 @@ export const {
   useGetCategoryQuery,
   useCreateCategoryMutation,
   useDeleteCategoryMutation,
+
+  useGetProductInfoColorQuery,
+  useCreateProdctInfoColorMutation,
+  useGetProductInfoDecorQuery,
+  useCreateProdctInfoDecorMutation,
+  useGetProductInfoFrameQuery,
+  useCreateProdctInfoFrameMutation,
 } = managementEndpoints;

@@ -4,10 +4,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import SortOutlinedIcon from "@mui/icons-material/SortOutlined";
-import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
+import PaletteIcon from "@mui/icons-material/Palette";
+import ChairIcon from "@mui/icons-material/Chair";
+import CropIcon from "@mui/icons-material/Crop";
 
 import CityTab from "./CityTab";
 import CategoryTab from "./CategoryTab";
+import ProductColorTab from "./ProductColorTab";
+import ProductDecorTab from "./ProductDecorTab";
+import ProductFrameTab from "./ProductFrameTab";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -35,13 +40,6 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
 const ManagementSection = () => {
   const location = useLocation();
 
@@ -51,21 +49,19 @@ const ManagementSection = () => {
     if (location.pathname === "/app/management/city") {
       setValue(0);
     }
+
     if (location.pathname === "/app/management/marka") {
       setValue(1);
     }
-    if (location.pathname === "/app/management/model") {
+
+    if (location.pathname === "/app/management/product-info-color") {
       setValue(2);
     }
-
-    if (location.pathname === "/app/management/body") {
+    if (location.pathname === "/app/management/product-info-decor") {
       setValue(3);
     }
-    if (location.pathname === "/app/management/generation") {
+    if (location.pathname === "/app/management/product-info-frame") {
       setValue(4);
-    }
-    if (location.pathname === "/app/management/tags") {
-      setValue(5);
     }
   }, [location]);
 
@@ -92,10 +88,27 @@ const ManagementSection = () => {
             label="Города"
             onClick={() => navigate("/app/management/city")}
           />
+
           <Tab
             icon={<PeopleOutlinedIcon />}
             label="Категорий"
-            onClick={() => navigate("/app/management/marka")}
+            onClick={() => navigate("/app/management/category")}
+          />
+
+          <Tab
+            icon={<PaletteIcon />}
+            label="Цвет Продукта"
+            onClick={() => navigate("/app/management/product-info-color")}
+          />
+          <Tab
+            icon={<ChairIcon />}
+            label="Декор Продукта"
+            onClick={() => navigate("/app/management/product-info-decor")}
+          />
+          <Tab
+            icon={<CropIcon />}
+            label="Каркас Продукта"
+            onClick={() => navigate("/app/management/product-info-frame")}
           />
         </Tabs>
       </Box>
@@ -103,8 +116,19 @@ const ManagementSection = () => {
       <TabPanel value={value} index={0}>
         <CityTab />
       </TabPanel>
+
       <TabPanel value={value} index={1}>
         <CategoryTab />
+      </TabPanel>
+
+      <TabPanel value={value} index={2}>
+        <ProductColorTab />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <ProductDecorTab />
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        <ProductFrameTab />
       </TabPanel>
     </Box>
   );
