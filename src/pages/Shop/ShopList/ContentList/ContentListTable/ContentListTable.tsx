@@ -21,7 +21,6 @@ import {
   TableDivider,
 } from "../../../../../components/Table/TableRounded/TableRounded.module";
 import {
-  IAdminAnnouncement,
   IAnnouncement,
 } from "../../../../../types/Announcement/Announcement.type";
 import { IShop } from "../../../../../types/Shop/IShop";

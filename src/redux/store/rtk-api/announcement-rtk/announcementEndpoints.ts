@@ -1,12 +1,7 @@
 import announcementApi from "./announcementApi";
 
-import {
-  IAdminAnnouncementResponse,
-  IAnnouncementsResponse,
-  ILikeAnnouncement,
-} from "../../../../types/Announcement/Announcement.type";
-import { IOneAnnouncementResponse } from "../../../../types/Announcement/OneAnnouncement.type";
 import { Status } from "../../../../types/Enums";
+import { IAnnouncementsResponse } from "../../../../types/Announcement/Announcement.type";
 
 export const announcementEndpoints = announcementApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -17,30 +12,6 @@ export const announcementEndpoints = announcementApi.injectEndpoints({
           params: { ...arg },
         };
       },
-      providesTags: ["announcements"],
-    }),
-    getAnnouncementsAdmin: builder.query<IAdminAnnouncementResponse, object>({
-      query: (arg) => {
-        return {
-          url: `/announcement/admin`,
-          params: { ...arg },
-        };
-      },
-      providesTags: ["announcements"],
-    }),
-
-    likeAnnouncement: builder.mutation<string, ILikeAnnouncement>({
-      query: (body) => ({
-        url: `/like`,
-        method: "POST",
-        body,
-      }),
-      invalidatesTags: ["announcements"],
-    }),
-    getOneAnnouncement: builder.query<IOneAnnouncementResponse, string>({
-      query: (id) => ({
-        url: `/announcement/one/${id}`,
-      }),
       providesTags: ["announcements"],
     }),
     createAnnouncement: builder.mutation<any, FormData>({
@@ -68,10 +39,6 @@ export const announcementEndpoints = announcementApi.injectEndpoints({
 
 export const {
   useGetAnnouncementsQuery,
-  useGetAnnouncementsAdminQuery,
-
-  useLikeAnnouncementMutation,
-  useGetOneAnnouncementQuery,
   useCreateAnnouncementMutation,
 
   useUpdateStatusAnnouncementMutation,

@@ -8,6 +8,8 @@ export type CustomButtonProps = {
   fsize?: string;
   color?: string;
   jc?: string;
+  discolor?: string;
+  disbgcolor?: string;
 } & ButtonProps;
 
 const MainBaseButton = styled((props: CustomButtonProps) => (
@@ -16,11 +18,18 @@ const MainBaseButton = styled((props: CustomButtonProps) => (
     fullWidth
     {...props}
     sx={{
-      backgroundColor: props.bgcolor ? props.bgcolor : "secondary.300",
+      backgroundColor: props.bgcolor ? props.bgcolor : "primary.main",
       borderRadius: props.bradius ? props.bradius : "10px",
       fontSize: props.fsize ? props.fsize : "16px",
       color: props.color ? props.color : "#FFF",
       justifyContent: props.jc ? props.jc : "center",
+
+      "&.Mui-disabled": {
+        color: props.discolor ? props.discolor : "primary.main",
+        backgroundColor: props.disbgcolor
+          ? props.disbgcolor
+          : "secondary.light",
+      },
     }}
   />
 ))(({ theme }) => ({
@@ -40,11 +49,6 @@ const MainBaseButton = styled((props: CustomButtonProps) => (
   "&:focus, &:hover": {
     borderColor: theme.palette.primary,
     backgroundColor: theme.palette.primary,
-  },
-
-  ".Mui-disabled": {
-    color: "#fff",
-    backgroundColor: "#fff",
   },
 }));
 

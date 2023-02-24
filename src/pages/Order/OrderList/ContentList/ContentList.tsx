@@ -4,8 +4,8 @@ import { Stack, Typography } from "@mui/material";
 import ContentSkeleton from "./ContentSkeleton";
 import ContentListPagination from "./ContentListPagination";
 import { useTypedSelector } from "../../../../redux/store";
-import { useGetAnnouncementsAdminQuery } from "../../../../redux/store/rtk-api/announcement-rtk/announcementEndpoints";
 import ContentListTable from "./ContentListTable";
+import { useGetAnnouncementsQuery } from "../../../../redux/store/rtk-api/announcement-rtk/announcementEndpoints";
 
 interface Props {
   forArchive?: boolean;
@@ -15,14 +15,14 @@ interface Props {
 }
 
 const ContentList: FC<Props> = ({ getCounts, withoutPagination }) => {
-  const filterValues = useTypedSelector((state) => state.filter.values);
+  // const filterValues = useTypedSelector((state) => state.filter.values);
 
   const queryWithFilterParams = {
-    ...filterValues,
+    // ...filterValues,
   };
 
   const { data, isLoading, isFetching, isSuccess } =
-    useGetAnnouncementsAdminQuery(queryWithFilterParams, {
+    useGetAnnouncementsQuery(queryWithFilterParams, {
       refetchOnMountOrArgChange: true,
     });
 

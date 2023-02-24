@@ -15,57 +15,55 @@ interface IInitState {
     limit: number;
     page: number;
 
-    marks: number[];
-    models: number[];
+    colors: number[];
 
-    yearTo: string;
-    yearFrom: string;
-    orderByPriceASC: string;
-    orderByPriceDESC: string;
+    photo?: boolean;
+    discount?: boolean;
+
+    cityId?: number;
+    categoryId?: number;
+
     priceTo: string;
     priceFrom: string;
   };
 }
 
 const initialState: IInitState = {
-  // состояние: нет в бэке
-  // models: null,
-  // marks: null,
-  // cities: null,
-
   helper: {
     reset: true,
   },
 
   values: {
-    limit: 5,
     page: 1,
+    limit: 5,
 
-    marks: [],
-    models: [],
+    colors: [],
 
-    yearFrom: "",
-    yearTo: "",
-    orderByPriceASC: "",
-    orderByPriceDESC: "",
+    photo: undefined,
+    discount: undefined,
+
+    cityId: undefined,
+    categoryId: undefined,
+
     priceFrom: "",
     priceTo: "",
   },
 };
 
-const filterReducer = createSlice({
-  name: "filter",
+const filterPorductSlice = createSlice({
+  name: "filterPorducts",
   initialState,
   reducers: {
-    setFilter: (state, { payload }) => {
+    setFilterProduct: (state, { payload }) => {
       state.values = { ...state.values, ...payload };
     },
-    setFilterReset: (state) => {
+    setFilterProductReset: (state) => {
       state.values = initialState.values;
     },
   },
 });
 
-export const { setFilter, setFilterReset } = filterReducer.actions;
+export const { setFilterProduct, setFilterProductReset } =
+  filterPorductSlice.actions;
 
-export default filterReducer.reducer;
+export default filterPorductSlice.reducer;

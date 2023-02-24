@@ -10,13 +10,13 @@ import { setRole } from "../../redux/store/reducers/user/user.slice";
 import Layout from "../../components/layouts";
 
 //pages
-import Profile from "../Profile";
 import Users from "../Users";
 
 import Management from "../Management";
 import Announcement from "../Announcement";
 import Order from "../Order";
 import Shop from "../Shop";
+import Profile from "../Profile";
 
 const Main = () => {
   // debugger

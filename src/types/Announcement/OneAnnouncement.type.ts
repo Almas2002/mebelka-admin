@@ -1,49 +1,53 @@
-import { DriveIUnitEnum, StatementEnum, Status, WheelEnum } from "../Enums";
-
-export interface IOneAnnouncementResponse {
-  a: {
+export interface IOneAnnouncement {
+  id: number;
+  title: string;
+  price: number;
+  discount: number;
+  colors: IColors[];
+  images: IImages[];
+  city: {
     id: number;
-    price: number;
-    description: string;
-    createdAt: Date;
-    status: Status;
-    views: number;
-    about: {
-      id: number;
-      year: number;
-      mileage: number;
-      steeringWheel: WheelEnum;
-      driveUnit: DriveIUnitEnum;
-      volume: number;
-      state: StatementEnum;
-      customsClearance: boolean;
-    };
-    images: IOneImage[];
-    author: {
-      id: number;
-      firstName: string;
-      user: {
-        id: number;
-        phone: string;
-      };
-    };
-    marka: IOneTitle;
-    city: IOneTitle;
-    body: IOneTitle;
-    model: IOneTitle;
+    title: string;
   };
-  count: {
-    commentsCount: number;
-    likesCount: number;
+  market: IMarket;
+  status: {
+    id: number;
+    avg: number;
+    commentCount: number;
+  };
+  info: {
+    id: number;
+    length: number;
+    width: number;
+    height: number;
+    production: string;
+    liftingMechanism: boolean;
+    laundryBoxes: boolean;
+    frames: IFrames[];
   };
 }
 
-interface IOneTitle {
+export interface IMarket {
+  id: number;
+  title: string;
+  street: string;
+  phone: string;
+  imageUrl: string;
+  email: string;
+}
+
+export interface IColors {
+  id: number;
+  title: string;
+  value: string;
+}
+
+export interface IFrames {
   id: number;
   title: string;
 }
 
-export interface IOneImage {
+export interface IImages {
   id: number;
-  image: string;
+  imageUrl: string;
 }

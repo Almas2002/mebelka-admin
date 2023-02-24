@@ -26,7 +26,7 @@ import {
 
 // store
 import { logout } from "../../redux/store/reducers/auth/auth.action";
-import { useTypedSelector } from "../../redux/store";
+import { AppDispatch, useTypedSelector } from "../../redux/store";
 
 import Inventory2RoundedIcon from "@mui/icons-material/Inventory2Rounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
@@ -41,12 +41,12 @@ const links = [
     icon: PersonRoundedIcon,
   },
   {
-    text: "Мои товары",
+    text: "Товары",
     route: "announcement",
     icon: Inventory2RoundedIcon,
   },
   {
-    text: "Мои заказы",
+    text: "Заказы",
     route: "order",
     icon: LocalShippingRoundedIcon,
   },
@@ -63,9 +63,7 @@ const links = [
 ];
 
 const DrawerAdmin = () => {
-  const dispatch = useDispatch();
-
-  const role = useTypedSelector((state) => state.user.role);
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <Drawer
@@ -116,10 +114,7 @@ const DrawerAdmin = () => {
       <Stack>
         <List>
           <StyledNavLink to="management">
-            <StyledListItem
-              // @ts-ignore
-              onClick={() => dispatch(logout())}
-            >
+            <StyledListItem>
               <StyledListItemIcon>
                 <Icon component={SettingsOutlinedIcon} />
               </StyledListItemIcon>
@@ -128,7 +123,6 @@ const DrawerAdmin = () => {
           </StyledNavLink>
           <StyledNavLink to="">
             <StyledListItem
-              // @ts-ignore
               onClick={() => dispatch(logout())}
               sx={{ color: "#F18989", mb: "35px" }}
             >

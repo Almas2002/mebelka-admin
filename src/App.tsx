@@ -24,7 +24,6 @@ function App() {
   // }, []);
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   // Context
   const [lastPage, setLastPage] = React.useState(defaultState.lastPage);
@@ -36,7 +35,10 @@ function App() {
     <>
       <MainContext.Provider value={{ lastPage, setPage }}>
         <Routes>
-          <Route path="/" element={<Navigate to={isAuth ? "/app" : "/auth"} />} />
+          <Route
+            path="/"
+            element={<Navigate to={isAuth ? "/app" : "/auth"} />}
+          />
           <Route
             path="/app/*"
             element={isAuth ? <Main /> : <Navigate to="/auth" />}

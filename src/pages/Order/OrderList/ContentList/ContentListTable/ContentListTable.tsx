@@ -21,7 +21,6 @@ import {
   TableDivider,
 } from "../../../../../components/Table/TableRounded/TableRounded.module";
 import {
-  IAdminAnnouncement,
   IAnnouncement,
 } from "../../../../../types/Announcement/Announcement.type";
 import numberWithSpaces from "../../../../../utils/numberWithSpaces";
@@ -29,7 +28,7 @@ import numberWithSpaces from "../../../../../utils/numberWithSpaces";
 const tableHead = ["Объявление", "Статус", "Категория"];
 
 interface Props {
-  tableData: IAdminAnnouncement[];
+  tableData: any[];
 }
 
 const ContentListTable: FC<Props> = ({ tableData }) => {
