@@ -27,7 +27,7 @@ const AnnouncementOne = () => {
           }}
         >
           <Typography sx={{ fontSize: "20px", fontWeight: 600 }}>
-            Редактирование
+            Товары
           </Typography>
 
           {/* <AnnouncementCreateForm forUpdate={true} updateData={data} /> */}

@@ -2,8 +2,8 @@ import { InputAdornment, Stack } from "@mui/material";
 import MainBaseButton from "../../../../components/Button/MainBaseButton/MainBaseButton";
 import { StyledMainInput } from "../../../../components/Input/StyledMainInput";
 import SearchIcon from "@mui/icons-material/Search";
-import { ProductFilterButton } from "../../../../components/modules/Filters/ProductFilter";
 
+import { ProductFilterButton } from "../../../../components/modules/Filters/ProductFilter";
 
 const FilterBox = () => {
   return (

@@ -12,7 +12,7 @@ export const profileEndpoints = profileApi.injectEndpoints({
         }),
         updateProfile: builder.mutation<IProfileUpdate, any>({
             query: (data) => ({
-                url: `profile/worker`,
+                url: `profile`,
                 method: "PUT",
                 body: data
             }),

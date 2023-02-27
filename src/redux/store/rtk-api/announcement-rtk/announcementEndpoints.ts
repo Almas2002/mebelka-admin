@@ -8,7 +8,7 @@ export const announcementEndpoints = announcementApi.injectEndpoints({
     getAnnouncements: builder.query<IAnnouncementsResponse, object>({
       query: (arg) => {
         return {
-          url: `/announcement`,
+          url: `/product`,
           params: { ...arg },
         };
       },

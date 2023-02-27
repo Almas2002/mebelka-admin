@@ -34,31 +34,6 @@ const RightSideBlock: FC<Props> = ({ data }) => {
             marginTop: "0.25px",
             overflow: "hidden",
             overflowY: "scroll",
-
-            // // Scroll
-            // /* width */
-            // "&::-webkit-scrollbar": {
-            //   width: "6px",
-            //   height: "500px",
-            //   backgroundColor: "#E4FFF9",
-            //   borderRadius: "10px",
-            // },
-
-            // /* Track */
-            // "&::-webkit-scrollbar-track": {
-            //   borderRadius: "10px",
-            // },
-
-            // /* Handle */
-            // "&::-webkit-scrollbar-thumb": {
-            //   background: "#2398AB",
-            //   borderRadius: "10px",
-            // },
-
-            // /* Handle on hover */
-            // "&::-webkit-scrollbar-thumb:hover": {
-            //   background: "#c5f1e8",
-            // },
           }}
         >
           <Grid

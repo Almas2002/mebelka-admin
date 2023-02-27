@@ -13,10 +13,10 @@ import Layout from "../../components/layouts";
 import Users from "../Users";
 
 import Management from "../Management";
-import Announcement from "../Announcement";
 import Order from "../Order";
 import Shop from "../Shop";
 import Profile from "../Profile";
+import Announcement from "../Announcement";
 
 const Main = () => {
   // debugger
