@@ -8,26 +8,26 @@ interface Props {
 
 const ProductInfo: FC<Props> = ({ data }) => {
   const stateData = [
-    { id: 0, title: "Название товара", value: data.title },
-    { id: 1, title: "Производитель", value: data.info.production },
-    { id: 2, title: "Описание товара", value: data.description },
-    { id: 3, title: "Артикул", value: data.id },
-    { id: 4, title: "Цена KZT", value: data.price },
+    // { id: 0, title: "Название товара", value: data.title },
+    { id: 1, title: "Производитель", value: data.info?.production },
+    { id: 2, title: "Описание товара", value: data?.description },
+    { id: 3, title: "Артикул", value: data?.id },
+    { id: 4, title: "Цена KZT", value: data?.price },
     // { id: 5, title: "Категория", value: data. },
     // { id: 6, title: "Подкатегория", value: "Подкатегория" },
     {
       id: 7,
       title: "Цвет",
-      value: data.colors.map((row) => row.title).join(", "),
+      value: data.colors?.map((row) => row?.title).join(", "),
     },
     {
       id: 8,
       title: "Текстура",
-      value: data.info.frames.map((row) => row.title).join(", "),
+      value: data?.info?.frames.map((row) => row?.title).join(", "),
     },
-    { id: 9, title: "Длина (mm)", value: data.info.length },
-    { id: 10, title: "Ширина (mm)", value: data.info.width },
-    { id: 11, title: "Высота (mm)", value: data.info.height },
+    { id: 9, title: "Длина (mm)", value: data?.info?.length },
+    { id: 10, title: "Ширина (mm)", value: data?.info?.width },
+    { id: 11, title: "Высота (mm)", value: data?.info?.height },
   ];
 
   return (
@@ -57,7 +57,7 @@ const ProductInfo: FC<Props> = ({ data }) => {
                   alignItems: "center",
                 }}
               >
-                {row.title}
+                {row?.title}
               </Typography>
               <Typography
                 sx={{
@@ -67,7 +67,7 @@ const ProductInfo: FC<Props> = ({ data }) => {
                   fontWeight: 500,
                 }}
               >
-                {row.value}
+                {row?.value}
               </Typography>
             </Box>
             {stateData.length !== row.id + 1 && <Divider />}
