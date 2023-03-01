@@ -26,7 +26,7 @@ const AnnounceBox: FC<Props> = ({ aData }) => {
       </Stack>
 
       <Stack sx={{ flex: 1 }}>
-        <ProductInfo />
+        <ProductInfo data={aData} />
       </Stack>
     </Stack>
   );

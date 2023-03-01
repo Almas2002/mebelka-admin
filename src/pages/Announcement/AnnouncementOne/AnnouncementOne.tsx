@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetOneProductQuery } from "../../../redux/store/rtk-api/product-rtk/productEndpoints";
+import AnnounceBox from "./AnnounceBox";
 
 import AnnounceHeader from "./AnnounceHeader";
 
@@ -13,7 +14,9 @@ const AnnouncementOne = () => {
 
   return (
     <Stack spacing={4}>
-      {announceId && <AnnounceHeader id={Number(announceId)} />}
+      {announceId && data && (
+        <AnnounceHeader id={Number(announceId)} confirm={data.confirm} />
+      )}
 
       {isLoading ? (
         "Загрузка..."
@@ -26,11 +29,7 @@ const AnnouncementOne = () => {
             backgroundColor: "common.white",
           }}
         >
-          <Typography sx={{ fontSize: "20px", fontWeight: 600 }}>
-            Товары
-          </Typography>
-
-          {/* <AnnouncementCreateForm forUpdate={true} updateData={data} /> */}
+          <AnnounceBox aData={data} />
         </Stack>
       ) : (
         "Ошибка при загрузки"

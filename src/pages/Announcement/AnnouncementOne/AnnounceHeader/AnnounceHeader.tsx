@@ -3,27 +3,29 @@ import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import MainBaseButton from "../../../../components/Button/MainBaseButton/MainBaseButton";
 import { useUpdateStatusAnnouncementMutation } from "../../../../redux/store/rtk-api/announcement-rtk/announcementEndpoints";
+import { useUpdateStatusProductMutation } from "../../../../redux/store/rtk-api/product-rtk/productEndpoints";
 import { Status } from "../../../../types/Enums";
 
 interface Props {
   id: number;
+  confirm: boolean;
 }
 
-const AnnounceHeader: FC<Props> = ({ id }) => {
+const AnnounceHeader: FC<Props> = ({ id, confirm }) => {
   const navigate = useNavigate();
 
   const handleNavigateBack = () => {
     navigate("/app/announcement/list");
   };
 
-  const [updateStatus] = useUpdateStatusAnnouncementMutation();
+  const [updateStatus] = useUpdateStatusProductMutation();
 
   const handleAccept = () => {
-    updateStatus({ id: id, body: { status: Status.ACCEPTED } });
+    updateStatus(id);
   };
 
   const handleDenied = () => {
-    updateStatus({ id: id, body: { status: Status.DENIED } });
+    // updateStatus({ id: id, body: { status: Status.DENIED } });
   };
 
   return (
@@ -37,6 +39,20 @@ const AnnounceHeader: FC<Props> = ({ id }) => {
       </MainBaseButton>
 
       <Stack direction="row" spacing={3}>
+        <Stack
+          justifyContent={"center"}
+          alignItems="center"
+          sx={{
+            backgroundColor: confirm ? "#2DC36A" : "red",
+            borderRadius: "12px",
+            padding: "12px",
+            fontWeight: 600,
+            color: "#fff",
+          }}
+        >
+          {confirm ? "Подтвержден" : "Отклонен"}
+        </Stack>
+
         <MainBaseButton
           onClick={handleAccept}
           sx={{
@@ -46,17 +62,6 @@ const AnnounceHeader: FC<Props> = ({ id }) => {
           }}
         >
           Подтвердить
-        </MainBaseButton>
-        <MainBaseButton
-          onClick={handleDenied}
-          bgcolor={"#fff"}
-          sx={{
-            backgroundColor: "#fff",
-            width: "200px",
-            color: "#767676",
-          }}
-        >
-          Отклонить
         </MainBaseButton>
       </Stack>
     </Stack>

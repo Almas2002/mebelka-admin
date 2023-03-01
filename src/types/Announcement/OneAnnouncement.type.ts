@@ -5,6 +5,9 @@ export interface IOneAnnouncement {
   discount: number;
   colors: IColors[];
   images: IImages[];
+  confirm: boolean;
+  description: string;
+
   city: {
     id: number;
     title: string;
@@ -16,6 +19,7 @@ export interface IOneAnnouncement {
     commentCount: number;
   };
   info: {
+    decor: IDecor;
     id: number;
     length: number;
     width: number;
@@ -40,6 +44,11 @@ export interface IColors {
   id: number;
   title: string;
   value: string;
+}
+
+export interface IDecor {
+  id: number;
+  title: string;
 }
 
 export interface IFrames {

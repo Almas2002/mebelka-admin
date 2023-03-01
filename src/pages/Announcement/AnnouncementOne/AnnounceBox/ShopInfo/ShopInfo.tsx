@@ -15,7 +15,7 @@ const ShopInfo: FC<Props> = ({ market }) => {
       </Typography>
 
       <Stack direction="row" spacing={3}>
-        <Stack spacing={2}>
+        {/* <Stack spacing={2}>
           <Typography sx={{ fontSize: "20px", fontWeight: 600 }}>
             Информация о заказчике
           </Typography>
@@ -56,11 +56,11 @@ const ShopInfo: FC<Props> = ({ market }) => {
               disabled
             />
           </Stack>
-        </Stack>
+        </Stack> */}
 
         <Stack spacing={2}>
           <Typography sx={{ fontSize: "20px", fontWeight: 600 }}>
-            Информация о вас
+            Информация о Магазине
           </Typography>
 
           <Stack>

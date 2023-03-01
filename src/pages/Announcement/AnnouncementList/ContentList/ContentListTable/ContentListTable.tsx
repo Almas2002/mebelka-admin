@@ -96,7 +96,7 @@ const ContentListTable: FC<Props> = ({ tableData }) => {
                   bgcolor="primary.main"
                   sx={{ height: "40px", maxWidth: "180px" }}
                 >
-                  Редактировать
+                  Подробнее
                 </MainBaseButton>
               </StyledBodyCellLast>
             </StyledBodyRow>
