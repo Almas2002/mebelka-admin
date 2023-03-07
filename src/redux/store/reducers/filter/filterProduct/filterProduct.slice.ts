@@ -35,7 +35,7 @@ const initialState: IInitState = {
 
   values: {
     page: 1,
-    limit: 5,
+    limit: 500,
 
     colors: [],
 
