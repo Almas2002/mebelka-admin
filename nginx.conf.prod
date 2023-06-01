@@ -18,7 +18,7 @@ server {
      client_max_body_size 100M;
      server_tokens off;
      ssl_certificate /etc/letsencrypt/live/admin.loom.kz/fullchain.pem;
-     ssl_certificate_key /etc/letsencrypt/admin.loom.kz/privkey.pem;
+     ssl_certificate_key /etc/letsencrypt/live/admin.loom.kz/privkey.pem;
 
      location / {
        add_header 'Access-Control-Allow-Origin' $http_origin;
