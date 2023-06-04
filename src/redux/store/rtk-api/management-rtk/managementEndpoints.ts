@@ -10,7 +10,7 @@ export const managementEndpoints = managementApi.injectEndpoints({
     getCategory: builder.query<IGetMarkaResponse, any>({
       query: (arg) => ({
         url: `category`,
-        params: { parentId: arg.parentId },
+        params: { parentId: arg.parentId, page: 1, limit: 200 },
         method: "GET",
       }),
       providesTags: ["category"],
@@ -38,6 +38,10 @@ export const managementEndpoints = managementApi.injectEndpoints({
       query: () => ({
         url: `product-info/color`,
         method: "GET",
+        params: {
+          page: 1,
+          limit: 200,
+        },
       }),
       providesTags: ["product-info-color"],
     }),
@@ -56,6 +60,10 @@ export const managementEndpoints = managementApi.injectEndpoints({
       query: () => ({
         url: `product-info/decor`,
         method: "GET",
+        params: {
+          page: 1,
+          limit: 200,
+        },
       }),
       providesTags: ["product-info-decor"],
     }),
@@ -71,6 +79,10 @@ export const managementEndpoints = managementApi.injectEndpoints({
       query: () => ({
         url: `product-info/frame`,
         method: "GET",
+        params: {
+          page: 1,
+          limit: 200,
+        },
       }),
       providesTags: ["product-info-frame"],
     }),
