@@ -17,9 +17,12 @@ const CategoryList = () => {
             <Typography>Список Категорий</Typography>
           </Stack>
 
-          {data.data.map((row) => (
-            <CategoryOne key={row.id} data={row} />
-          ))}
+          {data.data
+            .slice(0)
+            .reverse()
+            .map((row) => (
+              <CategoryOne key={row.id} data={row} />
+            ))}
         </Stack>
       ) : (
         "Ошибка при загрузки"
