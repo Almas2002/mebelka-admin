@@ -31,6 +31,7 @@ export const managementEndpoints = managementApi.injectEndpoints({
         url: `category/${arg.id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["category"],
     }),
 
     // product-info

@@ -7,6 +7,7 @@ import { StyledMainInput } from "../../../../../components/Input/StyledMainInput
 import { MainButton } from "../../../../../components/styled-components/StyledButton";
 import {
   useCreateCategoryMutation,
+  useDeleteCategoryMutation,
   useGetCategoryQuery,
 } from "../../../../../redux/store/rtk-api/management-rtk/managementEndpoints";
 
@@ -16,7 +17,12 @@ interface Props {
 
 const CategoryOne: FC<Props> = ({ data }) => {
   const [create] = useCreateCategoryMutation();
+  const [deleteCategory] = useDeleteCategoryMutation();
   const { data: childData } = useGetCategoryQuery({ parentId: data.id });
+
+  const handleDelete = () => {
+    deleteCategory({ id: data.id });
+  };
 
   return (
     <BaseAccordion summary={data.title}>
@@ -45,6 +51,13 @@ const CategoryOne: FC<Props> = ({ data }) => {
                     type="submit"
                   >
                     Добавить
+                  </MainBaseButton>
+                  <MainBaseButton
+                    onClick={handleDelete}
+                    bgcolor="error.main"
+                    sx={{ width: "120px" }}
+                  >
+                    Удалить
                   </MainBaseButton>
                 </Stack>
               </form>
