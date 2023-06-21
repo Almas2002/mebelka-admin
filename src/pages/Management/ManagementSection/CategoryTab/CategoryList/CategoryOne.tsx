@@ -1,6 +1,17 @@
-import { Button, Stack, Typography } from "@mui/material";
+import {
+  Badge,
+  Box,
+  Button,
+  CircularProgress,
+  IconButton,
+  InputAdornment,
+  Stack,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { Formik } from "formik";
 import { FC, useState } from "react";
+import { $image_api } from "../../../../../api";
 import BaseAccordion from "../../../../../components/BaseAccordion/StepperAccordion";
 import MainBaseButton from "../../../../../components/Button/MainBaseButton/MainBaseButton";
 import { StyledMainInput } from "../../../../../components/Input/StyledMainInput";
@@ -10,12 +21,14 @@ import {
   useDeleteCategoryMutation,
   useGetCategoryQuery,
 } from "../../../../../redux/store/rtk-api/management-rtk/managementEndpoints";
+import { IMarka } from "../../../../../types/Management/Marka";
 
 interface Props {
-  data: { id: number; title: string };
+  data: IMarka;
+  parent?: boolean;
 }
 
-const CategoryOne: FC<Props> = ({ data }) => {
+const CategoryOne: FC<Props> = ({ data, parent }) => {
   const [create] = useCreateCategoryMutation();
   const [deleteCategory] = useDeleteCategoryMutation();
 
@@ -32,7 +45,24 @@ const CategoryOne: FC<Props> = ({ data }) => {
 
   return (
     <BaseAccordion
-      summary={data.title}
+      summary={
+        <Stack direction="row" spacing={1} alignItems="center">
+          <Typography>{data.title}</Typography>
+          {data.icon && (
+            <Box
+              component="img"
+              sx={{
+                width: "45px",
+                height: "45px",
+                backgroundRepeat: "no-repeat",
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
+              src={`${$image_api}/${data.icon}`}
+            />
+          )}
+        </Stack>
+      }
       expanded={expanded}
       setExpanded={setExpanded}
     >
@@ -42,8 +72,14 @@ const CategoryOne: FC<Props> = ({ data }) => {
 
           <Formik
             initialValues={{ value: "" }}
-            onSubmit={(values) => {
-              create({ categoryId: data.id, title: values.value });
+            onSubmit={async (values, formikHelper) => {
+              const formData = new FormData();
+
+              formData.append("categoryId", String(data.id));
+              formData.append("title", String(values.value));
+
+              await create(formData);
+              formikHelper.resetForm();
             }}
           >
             {({ values, handleChange, handleSubmit }) => (
@@ -67,7 +103,7 @@ const CategoryOne: FC<Props> = ({ data }) => {
                     bgcolor="error.main"
                     sx={{ width: "120px" }}
                   >
-                    Удалить
+                    Удалить {data.title}
                   </MainBaseButton>
                 </Stack>
               </form>

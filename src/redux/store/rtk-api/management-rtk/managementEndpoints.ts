@@ -15,10 +15,7 @@ export const managementEndpoints = managementApi.injectEndpoints({
       }),
       providesTags: ["category"],
     }),
-    createCategory: builder.mutation<
-      any,
-      { categoryId?: number; title: string }
-    >({
+    createCategory: builder.mutation<any, FormData | { title: string }>({
       query: (body) => ({
         url: "category",
         method: "POST",

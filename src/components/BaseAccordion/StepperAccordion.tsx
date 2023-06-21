@@ -11,7 +11,7 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface Props {
-  summary: string;
+  summary: string | React.ReactNode;
   children: React.ReactNode;
   expanded: string | false;
   setExpanded: (value: string | false) => void;

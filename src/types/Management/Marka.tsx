@@ -6,4 +6,5 @@ export interface IGetMarkaResponse {
 export interface IMarka {
   id: number;
   title: string;
+  icon: string;
 }

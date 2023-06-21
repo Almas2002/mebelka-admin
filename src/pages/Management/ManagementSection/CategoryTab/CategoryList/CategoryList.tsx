@@ -21,7 +21,7 @@ const CategoryList = () => {
             .slice(0)
             .reverse()
             .map((row) => (
-              <CategoryOne key={row.id} data={row} />
+              <CategoryOne key={row.id} data={row} parent />
             ))}
         </Stack>
       ) : (
