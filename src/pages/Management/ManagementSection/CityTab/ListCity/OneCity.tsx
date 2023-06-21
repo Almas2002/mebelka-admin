@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { FC } from "react";
+import { FC, useState } from "react";
 import BaseAccordion from "../../../../../components/BaseAccordion/StepperAccordion";
 import MainBaseButton from "../../../../../components/Button/MainBaseButton/MainBaseButton";
 import {
@@ -26,8 +26,14 @@ const OneCity: FC<Props> = ({ data }) => {
     deleteUnderCity({ id: id });
   };
 
+  const [expanded, setExpanded] = useState<string | false>(false);
+
   return (
-    <BaseAccordion summary={data.title}>
+    <BaseAccordion
+      summary={data.title}
+      expanded={expanded}
+      setExpanded={setExpanded}
+    >
       <Stack spacing={2}>
         <MainBaseButton
           onClick={handleDelete}

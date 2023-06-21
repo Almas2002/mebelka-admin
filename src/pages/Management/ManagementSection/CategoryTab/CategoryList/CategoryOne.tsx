@@ -18,14 +18,24 @@ interface Props {
 const CategoryOne: FC<Props> = ({ data }) => {
   const [create] = useCreateCategoryMutation();
   const [deleteCategory] = useDeleteCategoryMutation();
-  const { data: childData } = useGetCategoryQuery({ parentId: data.id });
+
+  const [expanded, setExpanded] = useState<string | false>(false);
+
+  const { data: childData, isLoading } = useGetCategoryQuery(
+    { parentId: data.id },
+    { skip: expanded ? false : true }
+  );
 
   const handleDelete = () => {
     deleteCategory({ id: data.id });
   };
 
   return (
-    <BaseAccordion summary={data.title}>
+    <BaseAccordion
+      summary={data.title}
+      expanded={expanded}
+      setExpanded={setExpanded}
+    >
       <Stack spacing={2}>
         <Stack>
           <Typography>Добавить Подкатегорию</Typography>
@@ -64,6 +74,8 @@ const CategoryOne: FC<Props> = ({ data }) => {
             )}
           </Formik>
         </Stack>
+
+        {isLoading && <Typography>Загрузка...</Typography>}
 
         {childData &&
           childData.count > 0 &&

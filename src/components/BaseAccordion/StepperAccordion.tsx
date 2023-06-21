@@ -13,11 +13,16 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 interface Props {
   summary: string;
   children: React.ReactNode;
+  expanded: string | false;
+  setExpanded: (value: string | false) => void;
 }
 
-const BaseAccordion: FC<Props> = ({ summary, children }) => {
-  const [expanded, setExpanded] = React.useState<string | false>(false);
-
+const BaseAccordion: FC<Props> = ({
+  summary,
+  children,
+  expanded,
+  setExpanded,
+}) => {
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);

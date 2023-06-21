@@ -14,7 +14,7 @@ const CategoryTab = () => {
             fontWeight: 600,
           }}
         >
-          Цвет Продукта
+          Категорий
         </Typography>
       </Stack>
 
