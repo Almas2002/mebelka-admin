@@ -17,6 +17,7 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { UploadFile } from "../../../../../components/entities";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useEffect, useState } from "react";
+import { $image_api } from "../../../../../api";
 
 const CategoryCreate = () => {
   const [create] = useCreateCategoryMutation();
@@ -36,7 +37,7 @@ const CategoryCreate = () => {
 
           await create(formData);
           helper.resetForm();
-          setIcon(undefined)
+          setIcon(undefined);
         }}
       >
         {({ values, handleChange, handleSubmit }) => (
@@ -72,10 +73,11 @@ const CategoryCreate = () => {
 
 export default CategoryCreate;
 
-const ChoosePicture: React.FC<{
+export const ChoosePicture: React.FC<{
   icon: File | undefined;
   setIcon: (value: File | undefined) => void;
-}> = ({ icon, setIcon }) => {
+  image?: string;
+}> = ({ icon, setIcon, image }) => {
   const [file, setFile] = useState<File | undefined>();
 
   useEffect(() => {
@@ -96,20 +98,28 @@ const ChoosePicture: React.FC<{
     <UploadFile
       trigger={
         <Tooltip title={"Добавить иконку для категорий"}>
-          <IconButton aria-label="toggle password visibility" edge="end">
-            {file ? (
-              <Badge
-                badgeContent={
-                  <IconButton size="small" onClick={handleRemoveFile}>
-                    <ClearIcon fontSize="small" color="primary" />
-                  </IconButton>
-                }
-              >
+          <Badge
+            badgeContent={
+              file && (
+                <IconButton size="small" onClick={handleRemoveFile}>
+                  <ClearIcon fontSize="small" color="primary" />
+                </IconButton>
+              )
+            }
+          >
+            <IconButton aria-label="toggle password visibility" edge="end">
+              {file || image ? (
                 <Box
                   component="img"
-                  src={URL.createObjectURL(
-                    new Blob([file], { type: "application/image" })
-                  )}
+                  src={
+                    image
+                      ? `${$image_api}/${image}`
+                      : file
+                      ? URL.createObjectURL(
+                          new Blob([file], { type: "application/image" })
+                        )
+                      : ""
+                  }
                   sx={{
                     width: "45px",
                     height: "45px",
@@ -119,11 +129,11 @@ const ChoosePicture: React.FC<{
                     objectPosition: "center",
                   }}
                 />
-              </Badge>
-            ) : (
-              <AddRoundedIcon />
-            )}
-          </IconButton>
+              ) : (
+                <AddRoundedIcon />
+              )}
+            </IconButton>
+          </Badge>
         </Tooltip>
       }
       handleSetFile={handleSetFile}

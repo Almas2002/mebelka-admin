@@ -30,6 +30,28 @@ export const managementEndpoints = managementApi.injectEndpoints({
       }),
       invalidatesTags: ["category"],
     }),
+    updateCategory: builder.mutation<
+      any,
+      {
+        id: number;
+        formData: { categoryId?: number; title: string; file?: File };
+      }
+    >({
+      query: (arg) => {
+        const formData = new FormData();
+        arg.formData.categoryId &&
+          formData.append("categoryId", String(arg.formData.categoryId));
+        formData.append("title", arg.formData.title);
+        arg.formData.file && formData.append("file", arg.formData.file);
+
+        return {
+          url: `category/${arg.id}`,
+          method: "PUT",
+          body: formData,
+        };
+      },
+      invalidatesTags: ["category"],
+    }),
 
     // product-info
     getProductInfoColor: builder.query<IProductInfoColor[], any>({
@@ -99,6 +121,7 @@ export const {
   useGetCategoryQuery,
   useCreateCategoryMutation,
   useDeleteCategoryMutation,
+  useUpdateCategoryMutation,
 
   useGetProductInfoColorQuery,
   useCreateProdctInfoColorMutation,

@@ -7,6 +7,7 @@ const CityTab = () => {
     <Box>
       <Stack direction={"row"} sx={{ justifyContent: "space-between" }}>
         <Typography
+          component={"span"}
           sx={{
             fontSize: "25px",
             mb: "15px",

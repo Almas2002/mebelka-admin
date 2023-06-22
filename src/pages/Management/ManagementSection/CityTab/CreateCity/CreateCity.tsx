@@ -19,7 +19,9 @@ const CreateCity: FC<Props> = ({ id }) => {
 
   return (
     <Stack>
-      <Typography>Добавить {id ? "город" : "регион"}</Typography>
+      <Typography component={"div"}>
+        Добавить {id ? "город" : "регион"}
+      </Typography>
 
       <Formik
         initialValues={{ region: "" }}

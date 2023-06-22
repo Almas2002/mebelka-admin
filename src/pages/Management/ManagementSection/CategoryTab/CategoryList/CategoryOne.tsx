@@ -22,6 +22,7 @@ import {
   useGetCategoryQuery,
 } from "../../../../../redux/store/rtk-api/management-rtk/managementEndpoints";
 import { IMarka } from "../../../../../types/Management/Marka";
+import CategoryUpdate from "./CategoryUpdate";
 
 interface Props {
   data: IMarka;
@@ -67,6 +68,8 @@ const CategoryOne: FC<Props> = ({ data, parent }) => {
       setExpanded={setExpanded}
     >
       <Stack spacing={2}>
+        {parent && <CategoryUpdate category={data} />}
+
         <Stack>
           <Typography>Добавить Подкатегорию</Typography>
 
