@@ -122,7 +122,7 @@ export const ChoosePicture: React.FC<{
                   typeof image === "string"
                     ? `${$image_api}/${image}`
                     : URL.createObjectURL(
-                        new Blob([image], { type: "application/image" })
+                        new Blob([image], { type: "image/svg+xml" })
                       )
                 }
                 sx={{

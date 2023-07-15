@@ -37,7 +37,7 @@ const UploadFile: React.FC<Props> = ({ handleSetFile, trigger }) => {
         ref={filePicker}
         className="hiddenImagePicker"
         onChange={handleChange}
-        accept="image/*,.png,.jpg,.jpeg,.web"
+        accept="image/*,.png,.jpg,.jpeg,.web,.svg"
       />
     </>
   );
